@@ -10,8 +10,10 @@ const path = require('path');
 
 require("./db/mongoConnect");
 
+const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
+const registerRouter = require('./routes/register');
 
 const app = express();
 
@@ -42,6 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 
 // catch 404 and forward to error handler
